@@ -1,11 +1,13 @@
 import logo from './logo.svg';
+import TextArea from './components/TextArea';
 import './App.css';
 
 function App() {
   return (
-    <div> 
-      <h1>Levi Manager</h1>
-    </div>
+    <>
+    <h1>Levi Manager</h1>
+    <TextArea />
+    </>
   );
 }
 
