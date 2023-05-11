@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 
 //Set State variables
 const TextArea = () => {
-  const [id, setId] = useState('');
+  const [feed, setFeed]= useState('');
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
  const handleSubmit = async (e) => {
   e.preventDefault(); //prevent page from reloading
-
+  const newId = uuidv4(); // Generate a unique ID
   // set values for data
   const data = {  
-    id: id,
+    id: newId,
+    feed: feed,
     name: name,
     date: date,
     time: time
@@ -30,7 +32,7 @@ const TextArea = () => {
   const json = await response.json();
 //clear values in fields if response is good.
   if (response.ok) {
-    setId('');
+    setFeed('');
     setName('');
     setDate('');
     setTime('');
@@ -41,7 +43,7 @@ const TextArea = () => {
     <form onSubmit={handleSubmit}>
     <label>
     Did you feed Levi?
-    <select value={id} onChange={(e) => setId(e.target.value)}>
+    <select value={feed} onChange={(e) => setFeed(e.target.value)}>
         <option value="">Select one</option>
         <option value="yes">Yes</option>
         <option value="no">No</option>
